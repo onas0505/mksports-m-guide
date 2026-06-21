@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mk体育 · 持续关注与再次访问</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f4f6;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            color: #1e2a3a;
+            line-height: 1.6;
+            padding: 2rem 1.2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 980px;
+            width: 100%;
+        }
+
+        /* 主视觉卡片 hero */
+        .hero-card {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.03);
+            border: 1px solid #e8ecf0;
+            padding: 2.8rem 2.2rem;
+            margin-bottom: 2.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .hero-card h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0f1b2a;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+
+        .hero-card h1 span {
+            color: #3b7cbf;
+            font-weight: 500;
+        }
+
+        .hero-card p {
+            font-size: 1.1rem;
+            color: #3a4b5e;
+            max-width: 80%;
+            margin-bottom: 1.8rem;
+        }
+
+        .hero-card .meta-line {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem 2.2rem;
+            font-size: 0.9rem;
+            color: #64748b;
+            border-top: 1px solid #eef1f4;
+            padding-top: 1.5rem;
+            margin-top: 0.4rem;
+        }
+
+        .meta-line span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* 统一定位卡片组 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .info-card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.02);
+            border: 1px solid #e4e9ef;
+            padding: 2rem 1.8rem 1.8rem 1.8rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .info-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+            border-color: #d0d8e2;
+        }
+
+        .info-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #162230;
+            letter-spacing: -0.01em;
+        }
+
+        .info-card p {
+            font-size: 0.98rem;
+            color: #2e4057;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+            margin-top: 0.6rem;
+        }
+
+        .info-card ul li {
+            padding: 0.25rem 0 0.25rem 1.2rem;
+            position: relative;
+            font-size: 0.95rem;
+            color: #2e4057;
+        }
+
+        .info-card ul li::before {
+            content: "·";
+            position: absolute;
+            left: 0.2rem;
+            color: #7399c2;
+            font-weight: 700;
+        }
+
+        /* 用途卡片与人群卡片合并为两栏，此处单独微调 */
+        .purpose-card .tag {
+            display: inline-block;
+            background: #eef3f9;
+            border-radius: 30px;
+            padding: 0.3rem 1rem;
+            font-size: 0.8rem;
+            color: #2b4a6a;
+            margin-right: 0.5rem;
+            margin-bottom: 0.6rem;
+            border: 1px solid #dce4ee;
+        }
+
+        /* 适合人群卡片 */
+        .audience-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 0.7rem;
+            margin-top: 0.8rem;
+        }
+
+        .audience-tag {
+            background: #f0f3f8;
+            padding: 0.2rem 1rem 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #1a314a;
+            border: 1px solid #dfe6ef;
+        }
+
+        /* 自然链接段落卡片 */
+        .link-card {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e4e9ef;
+            padding: 2rem 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .link-card p {
+            font-size: 1rem;
+            color: #1f3348;
+            margin-bottom: 1rem;
+        }
+
+        .link-card a {
+            color: #1f5a8c;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #cbd8e9;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .link-card a:hover {
+            border-bottom-color: #1f5a8c;
+            color: #0c3c64;
+        }
+
+        .link-card .subnote {
+            font-size: 0.9rem;
+            color: #596e84;
+            margin-top: 1.2rem;
+            border-left: 3px solid #dce4ef;
+            padding-left: 1rem;
+        }
+
+        /* FAQ摘要卡片 */
+        .faq-mini {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e4e9ef;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            margin-bottom: 2.5rem;
+        }
+
+        .faq-mini h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #162230;
+        }
+
+        .faq-item {
+            margin-bottom: 0.9rem;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #1f3348;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item p {
+            font-size: 0.9rem;
+            color: #435a72;
+            padding-left: 0.5rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e2e8f0;
+            margin: 1rem 0 1.2rem 0;
+        }
+
+        .note-footer {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6d819b;
+            padding: 1.2rem 0 0.2rem 0;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 1.8rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 700px) {
+            body {
+                padding: 1.2rem 0.9rem;
+            }
+            .hero-card {
+                padding: 2rem 1.4rem;
+            }
+            .hero-card h1 {
+                font-size: 1.9rem;
+            }
+            .hero-card p {
+                max-width: 100%;
+                font-size: 1rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1.4rem;
+            }
+            .info-card {
+                padding: 1.6rem 1.2rem;
+            }
+            .link-card {
+                padding: 1.5rem 1.2rem;
+            }
+            .faq-mini {
+                padding: 1.4rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-card h1 {
+                font-size: 1.7rem;
+            }
+            .meta-line {
+                flex-direction: column;
+                gap: 0.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 主视觉卡片 hero -->
+    <div class="hero-card">
+        <h1>再次回到 <span>mk体育</span> · 持续关注</h1>
+        <p>一次收藏，不必每次重新寻找。页面虽小，却是许多人反复回来的地方。</p>
+        <div class="meta-line">
+            <span>📌 可收藏至浏览器书签</span>
+            <span>🔄 不定期内容更新</span>
+            <span>⚙️ 面向日常使用场景</span>
+        </div>
+    </div>
+
+    <!-- 用途卡片 + 适合人群卡片 （两栏）-->
+    <div class="card-grid">
+        <!-- 用途卡片  -->
+        <div class="info-card purpose-card">
+            <h3>常见用途</h3>
+            <p>从回顾赛事信息到关注近期动态，<a href="https://mksports-m.com" style="color: #1f5a8c; text-decoration: underline; text-underline-offset: 2px; border: none;">mk体育</a> 提供了一种轻量的方式。</p>
+            <div style="margin-top: 0.8rem;">
+                <span class="tag">浏览信息</span>
+                <span class="tag">关注更新</span>
+                <span class="tag">日常回访</span>
+                <span class="tag">书签收藏</span>
+            </div>
+            <ul>
+                <li>适合在碎片时间扫一眼</li>
+                <li>不需要反复搜索同一站点</li>
+                <li>持续可访问，内容保持稳定</li>
+            </ul>
+        </div>
+
+        <!-- 适合人群卡片 -->
+        <div class="info-card">
+            <h3>适合人群</h3>
+            <p>不论你是偶尔回访，还是习惯性关注，这个页面都为你保留。</p>
+            <div class="audience-items">
+                <span class="audience-tag">常看体育资讯的用户</span>
+                <span class="audience-tag">收藏爱好者</span>
+                <span class="audience-tag">习惯固定入口的人</span>
+                <span class="audience-tag">希望减少重复搜索的人</span>
+                <span class="audience-tag">对界面简洁有要求的人</span>
+            </div>
+            <ul style="margin-top: 0.7rem;">
+                <li>不论设备，打开即用</li>
+                <li>无需额外注册即可浏览公开内容</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 自然链接段落卡片 —— 从再次访问、收藏的角度 -->
+    <div class="link-card">
+        <p>如果你有把常用网站加入书签的习惯，那么<a href="https://mksports-m.com">mk体育</a> 会是一个值得保留的入口。不需要每次回忆地址，也不用在搜索栏重新输入。对于经常想回看信息的人来说，收藏一次，就是节省未来的时间。</p>
+        <p>有时只是随手点开，发现内容仍然在那里，连版式都没变。这种稳定感在快速变化的网络里算是一种舒服的体验。如果你也认同「够用就好」的思路，不妨试试把它留在书签栏。</p>
+        <div class="subnote">
+            💡 提示：直接收藏页面地址，下次从书签打开即回到这里。不需要额外步骤。
+        </div>
+    </div>
+
+    <!-- FAQ摘要卡片 -->
+    <div class="faq-mini">
+        <h4>一些常见疑问</h4>
+        <div class="faq-item">
+            <strong>这个页面会频繁变动吗？</strong>
+            <p>不会。结构保持稳定，内容会做常规更新，但不会每天大改。适合作为固定访问对象。</p>
+        </div>
+        <div class="faq-item">
+            <strong>是否需要登录或注册？</strong>
+            <p>公开页面，直接访问即可。不存在强制注册流程。</p>
+        </div>
+        <div class="faq-item">
+            <strong>移动端浏览效果如何？</strong>
+            <p>卡片采用响应式布局，小屏幕下单列显示，字体和间距已经适配过。</p>
+        </div>
+        <hr>
+        <p style="font-size: 0.9rem; color: #425a74;">如果你还没收藏，现在就可以把 <a href="https://mksports-m.com" style="border-bottom: 1px solid #c0d0e2;">mk体育</a> 加入书签。下次再回来，什么都不用想。</p>
+    </div>
+
+    <!-- 底部自然 note -->
+    <div class="note-footer">
+        <span>持续关注，从一次收藏开始。</span>
+    </div>
+</div>
+</body>
+</html>
